@@ -26,7 +26,7 @@
 </head>
 
 <body class="lato" data-theme="light">
-
+<!-- header -->
 <header class="lg:px-28 md:px-20">
 <!-- navbar -->
 <nav>
@@ -51,7 +51,7 @@
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
           <li><a href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
+          <li><a href="#main">Shop</a></li>
           <li><a href="#footer">Contact</a></li>
         </ul>
       </div>
@@ -60,12 +60,40 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1 space-x-1">
         <li class="text-base font-normal opacity-70"><a href="#">Home</a></li>
-        <li class="text-base font-normal opacity-70"><a href="#">Shop</a></li>
+        <li class="text-base font-normal opacity-70"><a href="#main">Shop</a></li>
         <li class="text-base font-normal opacity-70"><a href="#footer">Contact</a></li>
       </ul>
     </div>
-    <div class="navbar-end opacity-50 cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+    <div class="navbar-end opacity-50">
+<!-- try later  -->
+<!-- <div class="dropdown dropdown-end lg:hidden">
+  <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+    <div class="indicator">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+      <span class="badge badge-sm indicator-item">0</span>
+    </div>
+  </div>
+  <div
+    tabindex="0"
+    class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+    <div class="card-body">
+      <span class="text-lg font-bold"><span>0</span> Items</span>
+    </div>
+  </div>
+</div> -->
+<!-- try later -->
+      <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
     </div>
   </div>
 </nav>
@@ -79,14 +107,62 @@
       <p class="py-6">
         Peddy collaborates with local shelters to offer pet adoptions, providing a variety of animals like dogs and cats, ensuring they find loving homes and receive necessary care and support.
       </p>
-      <a class="btn bg-teal-600 hover:bg-teal-500 text-xl font-bold text-white px-8" href="#">View More</a>
+      <a class="btn bg-teal-700 hover:bg-teal-600 text-xl font-bold text-white px-8" href="#main">View More</a>
       <img class="py-12" src="images/pet.webp" alt="">
     </div>
   </div>
 </div>
   
 </header>
-  
+<!-- main section -->
+ <main id="main" class="px-8 lg:px-28 md:px-20 mx-auto">
+  <!-- main texts -->
+  <div class="max-w-[40rem] text-center mx-auto">
+    <h2 class="text-4xl font-black">Adopt  Your  Best Friend</h2>
+    <p class="pt-6 pb-12 opacity-70">Adopting a pet brings joy and companionship. Ensure your home is prepared and commit to their long-term care and well-being for a fulfilling experience.</p>
+  </div>
+
+  <!-- category buttons -->
+   <div id="category-buttons" class="grid grid-cols-2 lg:grid-cols-4 gap-6 pb-8">
+   </div>
+
+   <div class="flex justify-between items-center">
+    <h2 class="text-xl md:text-2xl font-black">Best Deal For you</h2>
+    <button class="btn bg-teal-700 hover:bg-teal-600 text-xl font-bold text-white px-6 md:px-8">Sort by Price</button>
+   </div>
+   <!-- category container -->
+    <div class="flex space-x-4 py-8">
+      <div id="category-container" class="md:w-4/6">
+        <!-- demo card -->
+<div class="border border-zinc-300 rounded-xl p-5 w-72">
+  <img class="w-64" src="images/Rectangle 1.svg" alt="">
+  <div class="space-y-2 py-5">
+    <h4 class="inter text-xl font-bold">Charlie</h4>
+  <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 1.svg" alt=""><span>Breed:</span></div>
+  <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 2.svg" alt=""><span>Birth:</span></div>
+  <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 3.svg" alt=""><span>Gender:</span></div>
+  <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 4.svg" alt=""><span>Price:</span></div>
+  </div>
+  <hr class="border border bg-zinc-500 px-5">
+  <div class="flex pt-5 justify-between">
+    <button class="btn-sm bg-white hover:border rounded-lg border border-teal-500 hover:border-teal-700 hover:rounded-lg"><img src="images/like.svg" alt=""></button>
+    <button class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-500 hover:bg-teal-700 hover:text-white rounded-lg px-5">Adopt</button>
+    <button class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-500 hover:bg-teal-700 hover:text-white rounded-lg px-5">Details</button>
+  </div>
+</div>
+
+      </div>
+
+      <div class="md:w-2/6 h-40 border border-black">
+
+
+      </div>
+    </div>
+
+ </main>
+
+
+  <!-- footer -->
 <footer id="footer" class="footer bg-zinc-900 text-white p-10 md:p-0 md:py-20 md:px-16 lg:px-28">
   <nav>
     <a class="flex flex-row justify-center space-x-3"><img class="w-7 h-6" src="images/logo.webp" alt=""> <span class="text-3xl font-black">Peddy</span></a>
@@ -156,11 +232,13 @@
       <h6 class="text-xl font-bold mb-4 opacity-80">Drop a Message</h6>
       <fieldset class="form-control w-60 space-y-4">
           <input type="email" placeholder="Enter your email" class="input border-none border-black bg-opacity-5 opacity-60" />
-          <button class="btn bg-teal-600 hover:bg-teal-500 border-none text-white text-xl">Subscribe</button>
+          <button class="btn bg-teal-700 hover:bg-teal-600 border-none text-white text-xl">Subscribe</button>
       </fieldset>
     </form>
   </nav>
 
 </footer>
+
+<script src="JS/button.js"></script>
 </body>
 </html>
