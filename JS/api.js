@@ -1,11 +1,62 @@
-//  Category Button fetched with API
+
+
+//  ------- Category Button fetched with API -------
 
 const loadCatBtn = () => {
     fetch("https://openapi.programming-hero.com/api/peddy/categories")
     .then((res) => res.json())
     .then((data) => addCatBtn(data.categories))
-    .catch((error) => console.log(error));
+    .catch((error) => console.error(error));
 };
+
+
+// ---------- Load all Card by API ---------
+
+const loadAllCard = () => {
+    fetch("https://openapi.programming-hero.com/api/peddy/pets")
+    .then((res) => res.json())
+    .then((data) =>
+        loadCards(data.pets))
+    .catch((error) => console.error(error));
+};
+
+// ---------- Load Cards By Category with API ----------
+
+const loadByCat = (id) => {
+    
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+        const activeBtn = document.getElementById(`btn-${id}`);
+            removeActive();
+            activeBtn.classList.add("active");
+            activeBtn.classList.add("rounded-l-full");
+            activeBtn.classList.add("rounded-r-full");
+            loadCards(data.data);
+        })
+    .catch((error) => console.error(error));
+    
+const removeActive= () => {
+    const buttons = document.getElementsByClassName("category-btn");
+    for(let btn of buttons) {
+        btn.classList.remove("active");
+        btn.classList.remove("rounded-l-full");
+        btn.classList.remove("rounded-r-full");
+    }
+}
+};
+
+//  ---------- Load Card Details by API ----------
+
+const loadCardDetails = (petId) => {
+
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+    .then((res) => res.json())
+    .then((data) => showDetailsModal(data.petData))
+    .catch((error) => console.error(error));
+    
+} 
+
 
 
 const addCatBtn = (category) => {
@@ -21,46 +72,7 @@ const addCatBtn = (category) => {
 
     });
 };
-loadCatBtn();
 
-//  Load all Card by API
-
-const loadAllCard = () => {
-    fetch("https://openapi.programming-hero.com/api/peddy/pets")
-    .then((res) => res.json())
-    .then((data) =>
-        loadCards(data.pets))
-    .catch((error) => console.log(error));
-};
-
-
-//  Load Cards By Category
-
-const loadByCat = (id) => {
-    
-    fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-        const activeBtn = document.getElementById(`btn-${id}`);
-            removeActive();
-            activeBtn.classList.add("active");
-            activeBtn.classList.add("rounded-l-full");
-            activeBtn.classList.add("rounded-r-full");
-            loadCards(data.data);
-        })
-    .catch((error) => console.log(error));
-    
-const removeActive= () => {
-    const buttons = document.getElementsByClassName("category-btn");
-    for(let btn of buttons) {
-        btn.classList.remove("active");
-        btn.classList.remove("rounded-l-full");
-        btn.classList.remove("rounded-r-full");
-    }
-}
-
-};
-loadByCat();
 
 const loadCards = (category) => {
     const cardContainer = document.getElementById('card-container');
@@ -84,7 +96,7 @@ const loadCards = (category) => {
     const div = document.createElement("div");
     div.classList ="border border-zinc-300 rounded-xl p-4 w-64"
     div.innerHTML =`
-  <img src="${item.image}" alt="">
+  <img class="rounded-lg" src="${item.image}" alt="">
   <div class="space-y-2 py-4">
     <h4 class="inter text-xl font-bold">${item.pet_name}</h4>
   <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 1.svg" alt=""><span>Breed:  ${item.breed? `${item.breed}` : "Not Mentioned" }</span></div>
@@ -96,7 +108,7 @@ const loadCards = (category) => {
   <div class="flex pt-4 justify-between">
     <button class="btn-sm bg-white hover:border rounded-lg border border-teal-600 border-opacity-15 hover:border-teal-700 hover:rounded-lg"><img src="images/like.svg" alt=""></button>
     <button class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Adopt</button>
-    <button class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Details</button>
+    <button id="${item.petId}" onclick="loadCardDetails(${item.petId})" class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Details</button>
   </div>
 
     `
@@ -104,4 +116,35 @@ const loadCards = (category) => {
 
     });
 };
+
+
+const showDetailsModal = (data) => {
+    console.log(data);
+    const modalDetails = document.getElementById('modal-details-container');
+    modalDetails.innerHTML = `
+    <img class="w-full rounded-lg" src="${data.image}" alt="">
+    <div class="p-3 space-y-4">
+    <h4 class="inter text-xl font-bold">${data.pet_name}</h4>
+    <div class="grid grid-cols-2 gap-3">
+    <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 1.svg" alt=""><span>Breed: ${data.breed? `${data.breed}` : "Not Mentioned" }</span></div>
+    <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 2.svg" alt=""><span>Birth: ${data.date_of_birth == null? "Not Available" : `${data.date_of_birth}`}</span></div>
+    <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 3.svg" alt=""><span>Gender: ${data.gender? `${data.gender}` : "Not Mentioned" }</span></div>
+    <div class="flex items-center space-x-2 opacity-80"><img src="images/Frame 4.svg" alt=""><span>Price: ${data.price == null? "Not Mentioned" : `${data.price}`}</span></div>
+    </div>
+    <div class="flex items-center space-x-2 opacity-80"><img class="w-6 h-6 opacity-80" src="images/Frame 5.svg" alt=""><span>Vaccinated status: ${data.vaccinated_status == null? "Not Mentioned" : `${data.vaccinated_status}`}</span></div>
+    <hr class=" w-full border border bg-zinc-500">
+    <h4 class="inter text-base font-semibold my-3">Details Information</h4>
+    <p class="inter opacity-70">${data.pet_details}</p>
+      <form method="dialog">
+        <button class="modal-action btn w-full text-center flex justify-center">Close</button>
+      </form>
+    </div>
+    `;
+    document.getElementById('showDetailsinModal').showModal();
+}
+
+
+// ---------- Function Call ----------
+loadByCat();
+loadCatBtn();
 loadAllCard();
