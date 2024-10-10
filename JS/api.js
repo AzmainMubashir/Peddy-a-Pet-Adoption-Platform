@@ -9,13 +9,15 @@ const loadCatBtn = () => {
 };
 
 
+
 // ---------- Load all Card by API ---------
 
 const loadAllCard = () => {
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
     .then((res) => res.json())
-    .then((data) =>
-        loadCards(data.pets))
+    .then((data) =>  {
+        sortCards(data.pets)
+    })
     .catch((error) => console.error(error));
 };
 
@@ -30,7 +32,7 @@ const loadByCat = (id) => {
             activeBtn.classList.add("active");
             activeBtn.classList.add("rounded-l-full");
             activeBtn.classList.add("rounded-r-full");
-            showSpinner(data.data);
+            sortCards(data.data);
         })
     .catch((error) => console.error(error));
     
@@ -62,11 +64,21 @@ const hideSpinner = () => {
     document.getElementById("fav-container").classList.remove("hidden");
 }
 
+//  Sort Cards
 
-
-
-
-
+const sortCards = (id) => {
+   let isClicked = false;
+   console.log(isClicked);
+   
+   document.getElementById("sortBtn").addEventListener('click', () => {
+    isClicked = true;
+    if (isClicked) {
+        showSpinner(id.sort((a,b) => b.price - a.price))
+    }
+})
+showSpinner(id);
+}
+// sortCards();
 
 
 //  ---------- Load Card Details by API ----------
@@ -79,8 +91,6 @@ const loadCardDetails = (petId) => {
     .catch((error) => console.error(error));
     
 } 
-
-
 
 const addCatBtn = (category) => {
     const btnContainer = document.getElementById('category-buttons');

@@ -127,8 +127,10 @@
    </div>
    <div class="flex justify-between items-center">
     <h2 class="text-xl md:text-2xl font-black">Best Deal For you</h2>
-    <button class="btn bg-teal-700 hover:bg-teal-600 text-xl font-bold text-white px-6 md:px-8">Sort by Price</button>
+    <button id="sortBtn" onclick="sortCards()" class="btn bg-teal-700 hover:bg-teal-600 text-xl font-bold text-white px-6 md:px-8">Sort by Price</button>
    </div>
+
+
    <!-- category container -->
     <div id="category-container" class="flex space-x-4 py-8">
       <span id="spinner" class="hidden h-40 loading loading-ring loading-lg mx-auto"></span>
@@ -215,8 +217,9 @@
   </nav>
 
 </footer>
-
+<!-- JavaScripts -->
 <script src="JS/api.js"></script>
+<script src="JS/sort.js"></script>
 <!-- Modal Starts -->
 <!-- <button id="modalBtn" class="hidden" onclick="showDetailsinModal.showModal()">open modal</button> -->
 <dialog id="showDetailsinModal" class="modal modal-bottom sm:modal-middle">
