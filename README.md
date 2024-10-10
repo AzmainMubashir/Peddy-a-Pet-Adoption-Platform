@@ -1,6 +1,6 @@
-***Project Name:**
+**Project Name:**
 # Peddy - A Pet Adoption Platform
-### (A Responsive Pet Shop)
+### A Responsive Pet Shop Website
 
 **Description:** 
 A responsive Pet Shop website. Where you can get look forward for a pet category wise. You can also sort them in descending order based on price. You can get every details of a pet from this site.
