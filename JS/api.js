@@ -64,12 +64,10 @@ const hideSpinner = () => {
     document.getElementById("fav-container").classList.remove("hidden");
 }
 
-//  Sort Cards
+// ---------- Sort Cards ----------
 
 const sortCards = (id) => {
-   let isClicked = false;
-   console.log(isClicked);
-   
+   let isClicked = false;   
    document.getElementById("sortBtn").addEventListener('click', () => {
     isClicked = true;
     if (isClicked) {
@@ -78,7 +76,6 @@ const sortCards = (id) => {
 })
 showSpinner(id);
 }
-// sortCards();
 
 
 //  ---------- Load Card Details by API ----------
@@ -141,7 +138,7 @@ const loadCards = (category) => {
     <hr class="border border bg-zinc-500 px-4">
     <div class="flex pt-4 justify-between">
     <button class="btn-sm bg-white hover:border rounded-lg border border-teal-600 border-opacity-15 hover:border-teal-700 hover:rounded-lg"><img src="images/like.svg" alt=""></button>
-    <button class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Adopt</button>
+    <button id="adopt-${item.petId}" onclick="showAdoptModal(${item.petId})" class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Adopt</button>
     <button id="${item.petId}" onclick="loadCardDetails(${item.petId})" class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Details</button>
     </div>`
     cardContainer.append(div);
@@ -174,6 +171,36 @@ const showDetailsModal = (data) => {
     `;
     document.getElementById('showDetailsinModal').showModal();
 }
+
+// ---------- Adopt Modal Auto Close ----------
+const showAdoptModal = (id) => {
+    console.log('adoptModal');
+    
+    adoptModal.showModal();
+
+    let totalTime = 3;
+    document.getElementById("countdown").innerText = '3';
+    let Down = setInterval(function(){
+    totalTime--;
+    document.getElementById("countdown").innerText = totalTime;
+    if(totalTime <= 0)
+        clearInterval(Down);
+    },1000);
+
+    let autoCloseModal = setInterval(function(){
+        document.getElementById("auto-close").click();
+        clearInterval(autoCloseModal);
+    },3000);
+    document.getElementById(`adopt-${id}`).classList ="btn-sm rounded-lg btn-disabled border-none bg-stone-400 text-stone-700 text-base font-bold";
+    document.getElementById(`adopt-${id}`).innerText = "Adopted";
+}
+
+// ----------Like to Add Photo in SideBar ----------
+
+
+
+
+
 
 
 // ---------- Function Call ----------
