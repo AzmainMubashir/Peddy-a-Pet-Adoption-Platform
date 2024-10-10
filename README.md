@@ -1,4 +1,3 @@
-**Project Name:**
 # Peddy - A Pet Adoption Platform
 ### A Responsive Pet Shop Website
 
