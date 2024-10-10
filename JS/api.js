@@ -94,7 +94,7 @@ const addCatBtn = (category) => {
 
     category.forEach( (item) => {
     const div = document.createElement("div");
-    div.classList = "flex items-center justify-center w-52";
+    div.classList = "flex items-center justify-center w-46 md:w-48 mx-auto";
     let catName = item.category.toLowerCase();
     div.innerHTML =`
     <button id="btn-${catName}" onclick="loadByCat('${catName}')" class="w-full flex flex-row border border-gray-400 border-opacity-70 rounded-2xl px-6 py-3 space-x-4 items-center justify-center category-btn"><img src="${item.category_icon}" alt=""><span class="inter text-2xl font-bold">${item.category}s</span></button>
@@ -126,7 +126,7 @@ const loadCards = (category) => {
 
     category.forEach( (item) => {    
     const div = document.createElement("div");
-    div.classList ="border border-zinc-300 rounded-xl p-4 md:w-46 lg:w-56"
+    div.classList ="border border-zinc-300 rounded-xl p-4"
     div.innerHTML =`
     <img class="rounded-lg" src="${item.image}" alt="">
     <div class="space-y-2 py-4">
