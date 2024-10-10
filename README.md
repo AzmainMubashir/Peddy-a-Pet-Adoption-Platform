@@ -2,7 +2,7 @@
 ### A Responsive Pet Shop Website
 
 #### **Description:**
-A responsive Pet Shop website. Where you can get look forward for a pet category wise. You can also sort them in descending order based on price. You can get every details of a pet from this site.
+A responsive Pet Shop website. Where you can get look forward for a pet category wise. You can also sort them in descending order based on price. You can get every details of a pet from this site. Best site to adopt a pet online.
 
 #### **Key features:**
 - You can separate all pets by 4 categories.
