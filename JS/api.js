@@ -94,9 +94,10 @@ const addCatBtn = (category) => {
 
     category.forEach( (item) => {
     const div = document.createElement("div");
+    div.classList = "flex items-center justify-center w-52";
     let catName = item.category.toLowerCase();
     div.innerHTML =`
-    <button id="btn-${catName}" onclick="loadByCat('${catName}')" class="w-48 flex flex-row border border-gray-400 border-opacity-70 rounded-2xl px-6 py-3 space-x-4 items-center justify-center category-btn"><img src="${item.category_icon}" alt=""><span class="inter text-2xl font-bold">${item.category}s</span></button>
+    <button id="btn-${catName}" onclick="loadByCat('${catName}')" class="w-full flex flex-row border border-gray-400 border-opacity-70 rounded-2xl px-6 py-3 space-x-4 items-center justify-center category-btn"><img src="${item.category_icon}" alt=""><span class="inter text-2xl font-bold">${item.category}s</span></button>
     `
     btnContainer.append(div);
 
@@ -125,7 +126,7 @@ const loadCards = (category) => {
 
     category.forEach( (item) => {    
     const div = document.createElement("div");
-    div.classList ="border border-zinc-300 rounded-xl p-4 w-64"
+    div.classList ="border border-zinc-300 rounded-xl p-4 md:w-46 lg:w-56"
     div.innerHTML =`
     <img class="rounded-lg" src="${item.image}" alt="">
     <div class="space-y-2 py-4">
@@ -137,7 +138,7 @@ const loadCards = (category) => {
     </div>
     <hr class="border border bg-zinc-500 px-4">
     <div class="flex pt-4 justify-between">
-    <button class="btn-sm bg-white hover:border rounded-lg border border-teal-600 border-opacity-15 hover:border-teal-700 hover:rounded-lg"><img src="images/like.svg" alt=""></button>
+    <button onclick="addImageToFav('${item.image}')" class="btn-sm bg-white hover:border rounded-lg border border-teal-600 border-opacity-15 hover:border-teal-700 hover:rounded-lg"><img src="images/like.svg" alt=""></button>
     <button id="adopt-${item.petId}" onclick="showAdoptModal(${item.petId})" class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Adopt</button>
     <button id="${item.petId}" onclick="loadCardDetails(${item.petId})" class="btn-sm text-base font-bold bg-white text-teal-700 border border-teal-600 border-opacity-15 hover:bg-teal-700 hover:text-white rounded-lg px-2">Details</button>
     </div>`
@@ -197,7 +198,16 @@ const showAdoptModal = (id) => {
 
 // ----------Like to Add Photo in SideBar ----------
 
+const addImageToFav = (id) => {
 
+    let imgContainer = document.getElementById("fav-container");
+    let div = document.createElement('div');
+    div.innerHTML = `
+    <img class="rounded-lg" src="${id}">
+    `;
+    imgContainer.appendChild(div);
+
+}
 
 
 
