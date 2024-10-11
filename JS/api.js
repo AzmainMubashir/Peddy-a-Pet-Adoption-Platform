@@ -50,7 +50,7 @@ const removeActive= () => {
 const showSpinner = (id) => {
     document.getElementById("spinner").classList.remove("hidden");
     document.getElementById("card-container").classList.add("hidden");
-    document.getElementById("fav-container").classList.add("hidden");
+    document.getElementById("fav-container").classList.add("lg:hidden");
     
     setTimeout(function () {
         loadCards(id)
@@ -61,7 +61,7 @@ const showSpinner = (id) => {
 const hideSpinner = () => {
     document.getElementById("spinner").classList.add("hidden");
     document.getElementById("card-container").classList.remove("hidden");
-    document.getElementById("fav-container").classList.remove("hidden");
+    document.getElementById("fav-container").classList.remove("lg:hidden");
 }
 
 // ---------- Sort Cards ----------
@@ -197,15 +197,27 @@ const showAdoptModal = (id) => {
 }
 
 // ----------Like to Add Photo in SideBar ----------
-
+document.getElementById("fav-item-count").innerText = '0';
 const addImageToFav = (id) => {
 
     let imgContainer = document.getElementById("fav-container");
-    let div = document.createElement('div');
-    div.innerHTML = `
+    let div1 = document.createElement('div');
+    div1.innerHTML = `
+    <img class="hidden lg:flex rounded-lg" src="${id}">
+    `;
+    imgContainer.appendChild(div1);
+    let favCount = parseInt(document.getElementById("fav-item-count").innerText);
+    favCount += 1;
+    document.getElementById("fav-item-count").innerText = favCount;
+
+
+    let imgContainerSm = document.getElementById("fav-container-sm");
+    document.getElementById('fav-bar-text').classList.add('hidden');
+    let div2 = document.createElement('div');
+    div2.innerHTML = `
     <img class="rounded-lg" src="${id}">
     `;
-    imgContainer.appendChild(div);
+    imgContainerSm.appendChild(div2);
 
 }
 

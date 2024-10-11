@@ -27,10 +27,9 @@
 </head>
 
 <body class="lato mx-auto" data-theme="light">
-<!-- header -->
-<header class="w-11/12 mx-auto text-center">
-<!-- navbar -->
-<nav>
+
+  <!-- navbar -->
+<nav class="sticky top-0 bg-white z-10 px-3 md:px-10 mx-auto text-center">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -65,39 +64,47 @@
         <li class="text-base font-normal opacity-70"><a href="#footer">Contact</a></li>
       </ul>
     </div>
-    <div class="navbar-end opacity-50">
-<!-- try later  -->
-<!-- <div class="dropdown dropdown-end lg:hidden">
+    <div class="navbar-end">
+      <svg class="cursor-pointer opacity-50 mr-4" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+
+      <!-- fav Cart  -->
+<div class="dropdown dropdown-end z-10 lg:hidden">
   <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-    <div class="indicator">
+    <div class="indicator opacity-50">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-      <span class="badge badge-sm indicator-item">0</span>
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+    </svg>
+      <span id="fav-item-count" class="badge badge-sm indicator-item"></span>
     </div>
   </div>
   <div
     tabindex="0"
-    class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
-    <div class="card-body">
-      <span class="text-lg font-bold"><span>0</span> Items</span>
+    class="card card-compact shadow dropdown-content bg-gray-100 mt-4 w-52 rounded-lg">
+    <div id="fav-container-sm" class="h-96 grid grid-cols-1 gap-4 rounded-lg p-2 overflow-y-scroll">
+      <p id="fav-bar-text" class="text-base text-center font-normal py-5" >Nothing in your Favorite list.</p>
+      <!-- <span class="text-lg font-bold"><span>0</span> Items</span> -->
     </div>
   </div>
-</div> -->
-<!-- try later -->
-      <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+</div>
+<!-- fav cart end -->
+
+
     </div>
   </div>
 </nav>
+
+<!-- header -->
+<header class="w-11/12 mx-auto text-center">
+
 
 <!-- hero -->
 <div class="hero bg-white">
@@ -134,15 +141,15 @@
    <!-- category container -->
     <div id="category-container" class="flex space-x-4 py-8">
       <span id="spinner" class="hidden h-40 loading loading-ring loading-lg mx-auto"></span>
-      <div id="card-container" class="w-9/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div id="card-container" class="lg:w-9/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
       </div>
-      <div id="fav-container" class="w-3/12 grid grid-cols-1 content-start lg:grid-cols-2 gap-4 border border-zinc-300 rounded-xl p-4">
+      <div id="fav-container" class="hidden content-start lg:w-3/12 lg:grid lg:grid-cols-2 lg:gap-4 lg:border lg:border-zinc-300 lg:rounded-xl lg:p-4">
       </div>
     </div>
  </main>
 
   <!-- footer -->
-<footer id="footer" class="footer bg-zinc-900 text-white p-10 md:p-0 md:py-20 md:px-16 lg:px-28">
+<footer id="footer" class="footer p-10 md:p-0 md:py-20 md:px-16 lg:px-28 bg-zinc-900 text-white">
   <nav>
     <a class="flex flex-row justify-center space-x-3"><img class="w-7 h-6" src="images/logo.webp" alt=""> <span class="text-3xl font-black">Peddy</span></a>
     <p class="text-base opacity-70">Location: Washington 165, NY CA<br>
